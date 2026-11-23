@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- A continuous, rising sound-ribbon: a quiet visual signature for Seamless. -->
+    <path android:fillColor="#FF9DBBB8"
+        android:pathData="M25,62 C33,62 35,42 44,42 C53,42 54,67 63,67 C72,67 75,49 83,49 L83,58 C76,58 73,77 63,77 C51,77 50,52 44,52 C39,52 36,72 25,72 Z" />
+    <path android:fillColor="#FFD0C7B5"
+        android:pathData="M25,62 C33,62 35,42 44,42 C53,42 54,67 63,67 C72,67 75,49 83,49 L83,53 C75,53 73,72 63,72 C52,72 51,47 44,47 C40,47 36,67 25,67 Z" />
+</vector>

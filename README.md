@@ -1,20 +1,17 @@
 # Seamless
 
-Seamless is an Android music player with gapless/crossfade playback, synchronized lyrics, a reactive beat circle, and an AMOLED theme.
+Seamless is intended to be a premium, offline-first Android music player with synchronized lyrics, a reactive audio visualizer, deep visual customization, and a shape-adjustable home-screen playback widget.
 
-## Updated in this project
-- Seven beat-circle visual styles: Bars, Rings, Flutter, Wave, Orbit, Particles, and Spiral.
-- Original generated fallback cover artwork is used when a track has no embedded artwork.
-- The lyrics panel refreshes partial Whisper segments more frequently while local transcription is running.
-- Minimal infinity launcher icon resources are retained.
-- GitHub Actions fetches whisper.cpp and the quantized speech model, then builds an ARM64 APK. If the native engine build fails, it produces a fallback APK without offline transcription; check the release notes and build log.
+## Visual identity
+- AMOLED-first near-black launcher background.
+- Restrained continuous sound-ribbon icon; no infinity mark and no lettering.
+- Muted sage/stone accent colors.
 
-## Lyrics and permissions
-Grant Seamless access to your audio library when Android asks. For an existing local music library, open Settings → Lyrics → **Listen to all songs** to run on-device transcription across tracks that do not already have lyrics. The **Listen automatically** option transcribes the currently played track when lyrics are unavailable.
+## Product requirements
+See [`docs/IMPLEMENTATION-ROADMAP.md`](docs/IMPLEMENTATION-ROADMAP.md) for the detailed requirements for the resizable playback widget, theme studio, word-synchronized lyrics, audio-reactive visualizer, and performance quality gates.
 
-Android does not provide an ordinary permission that lets a third-party app silently capture and transcribe every sound from every other app. Capturing other apps' playback requires Android's user-approved MediaProjection playback-capture flow and only works for source apps that allow capture. Seamless therefore transcribes audio files in its own permitted media library, not arbitrary system-wide audio.
+## Important repository status
+This ZIP is a resource/native-code snapshot, not a complete Android Studio project. It currently contains no Gradle wrapper or Gradle project files and no Java/Kotlin app source. The GitHub Actions workflow now checks for those files first and reports the missing project structure instead of failing later during SDK setup/build. An APK cannot be built from this snapshot alone.
 
-Whisper transcription is local once the model is installed. The first GitHub build downloads the model and may take longer; the model increases APK size substantially. If GitHub Actions falls back to the non-Whisper build, offline audio transcription will not be available in that APK.
-
-## Build
-Push the repository to GitHub and run **Build Seamless APK** under Actions, or let it run after a push to `main`/`master`. The APK is published as the `latest` GitHub Release.
+## Android widget design decision
+The requested adjustable mini-player is specified as a resizable Android home-screen App Widget with compact, standard, and expanded layouts. This is preferable to forcing an always-on-top overlay. A separate optional overlay can be considered later, but requires explicit special permission and should not be needed for playback controls.
