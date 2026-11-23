@@ -1,17 +1,21 @@
 # Seamless
 
-Seamless is intended to be a premium, offline-first Android music player with synchronized lyrics, a reactive audio visualizer, deep visual customization, and a shape-adjustable home-screen playback widget.
+A complete, minimal Android Studio/Gradle starter repository for a local AMOLED music player.
 
-## Visual identity
-- AMOLED-first near-black launcher background.
-- Restrained continuous sound-ribbon icon; no infinity mark and no lettering.
-- Muted sage/stone accent colors.
+## Build an APK
+1. Create a new public or private GitHub repository named `Seamless`.
+2. Upload the **contents** of this ZIP (the `.github` and `app` folders plus Gradle files) to the repository root.
+3. Open **Actions** → **Build Seamless APK**. It also runs automatically after a push to `main` or `master`.
+4. When the run finishes, download the `Seamless-APK` artifact from the run's Artifacts section.
 
-## Product requirements
-See [`docs/IMPLEMENTATION-ROADMAP.md`](docs/IMPLEMENTATION-ROADMAP.md) for the detailed requirements for the resizable playback widget, theme studio, word-synchronized lyrics, audio-reactive visualizer, and performance quality gates.
+## Included in this foundation
+- Android project structure and valid Gradle configuration (no obsolete `sdkmanager tools` package).
+- AMOLED-black interface and local audio library browsing.
+- Basic play, pause, next/previous, and seek controls.
+- Resizable Android home-screen widget with play/pause and open-player actions.
+- Small accent palette selector.
 
-## Important repository status
-This ZIP is a resource/native-code snapshot, not a complete Android Studio project. It currently contains no Gradle wrapper or Gradle project files and no Java/Kotlin app source. The GitHub Actions workflow now checks for those files first and reports the missing project structure instead of failing later during SDK setup/build. An APK cannot be built from this snapshot alone.
+## Honest feature status
+This is a working foundation, not a Spotify-equivalent finished product. Word-level lyric alignment, Whisper transcription, true gapless/crossfade playback, a beat-reactive visualizer, persistent full theme studio, and background media-session controls are **not implemented in this starter**. The widget's Next action opens the app; it does not yet advance playback while the app process is closed. These require further implementation and device testing. The build workflow compiles the Android app; it does not certify every device feature.
 
-## Android widget design decision
-The requested adjustable mini-player is specified as a resizable Android home-screen App Widget with compact, standard, and expanded layouts. This is preferable to forcing an always-on-top overlay. A separate optional overlay can be considered later, but requires explicit special permission and should not be needed for playback controls.
+The original uploaded repository contained only 17 top-level files and no Gradle project or Android application source. This archive supplies the missing buildable project foundation instead of pretending the old files were a complete app.
